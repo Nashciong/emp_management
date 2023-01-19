@@ -12,7 +12,8 @@ class Employee extends Model
         'last_name',
         'age',
         'address',
-        'email'
+        'email',
+        'company_id'
     ];
 
     public function salary()
@@ -25,7 +26,7 @@ class Employee extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function department()
+    public function departments()
     {
         return $this->belongsToMany(Department::class)->withPivot('total_employee','sub_total_employee');
     }

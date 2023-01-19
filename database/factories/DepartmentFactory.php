@@ -19,7 +19,6 @@ class DepartmentFactory extends Factory
     {
         return [
             'department_name' => $this->faker->catchPhrase,
-
             //
         ];
     }

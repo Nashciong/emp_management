@@ -10,11 +10,11 @@ class Department extends Model
     protected $fillable = [
         'department_name',
     ];
-
-    public function employee()
+    public function employees()
     {
-        return $this->belongsToMany(Employee::class);
+        return $this->belongsToMany(Employee::class)->withPivot('total_employee','sub_total_employee');
     }
+
 
     use HasFactory;
 }

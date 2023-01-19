@@ -12,7 +12,7 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function Employees()
     {
         return Employee::all();
         //
@@ -34,7 +34,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function AddEmployee(Request $request)
     {
         // $data =  $request->validate([
         //     'first_name' => 'required|min:2|max:10',
@@ -47,7 +47,7 @@ class EmployeeController extends Controller
             'age' => $request->age,
             'address' => $request->address,
             'email' => $request->email,
-            'password' => $request->password,
+            'company_id' => $request->company_id
         ]);
         //
     }
@@ -58,7 +58,7 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function Employee($id)
     {
         return Employee::findOrFail($id);
         //
@@ -82,14 +82,15 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function updateEmployee(Request $request,$id)
     {
         return Employee::find($id)->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'age' => $request->age,
             'address' => $request->address,
-            'email' => $request->email
+            'email' => $request->email,
+            'company_id' => $request->company_id
         ]);
         //
     }
@@ -100,7 +101,7 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyEmployee($id)
     {
         return Employee::find($id)->delete();
         //

@@ -22,12 +22,13 @@ Route::middleware(['auth:sanctum','ver'])->get('/user', function (Request $reque
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Route::get('fetchData', [EmployeeController::class, 'index']);
-    // Route::post('addData', [EmployeeController::class, 'store']);
-    // Route::delete('deleteData/{id}', [EmployeeController::class, 'destroy']);
-    // Route::get('showData/{id}', [EmployeeController::class, 'show']);
-    // Route::put('updateData/{id}', [EmployeeController::class, 'update']);
-    Route::apiResource('employee', EmployeeController::class);
+    Route::get('employees', [EmployeeController::class, 'Employees']);
+    Route::get('employee/{id}', [EmployeeController::class, 'Employee']);
+    Route::post('addEmployee', [EmployeeController::class, 'AddEmployee']);
+    Route::delete('deleteEmployee/{id}', [EmployeeController::class, 'destroyEmployee']);
+    Route::put('updateEmployee/{id}', [EmployeeController::class, 'updateEmployee']);
+    Route::get('/logout', [AuthController::class,'logout']);
+    // Route::apiResource('employee', EmployeeController::class);
 });
 Route::post('/login', [AuthController::class,'login']);
 Route::post('/many', [Controller::class,'mm']);
